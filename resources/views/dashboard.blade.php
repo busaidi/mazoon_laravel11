@@ -40,6 +40,15 @@
         </div>
     </div>
 </nav>
+<ul>
+    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+        <li>
+            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                {{ $properties['native'] }}
+            </a>
+        </li>
+    @endforeach
+</ul>
 <div class="container">
     <div class="card border-0 shadow my-5">
         <div class="card-header bg-light">
