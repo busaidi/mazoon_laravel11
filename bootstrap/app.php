@@ -25,7 +25,8 @@ return Application::configure(basePath: dirname(__DIR__))
         //redirect customer user
         $middleware->redirectTo(
             guests: 'account/login',
-            users: 'account/dashboard'
+            //users: 'account/dashboard'
+            users: 'home'
         );
     })
     ->withExceptions(function (Exceptions $exceptions) {

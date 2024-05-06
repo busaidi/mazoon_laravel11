@@ -8,6 +8,31 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
 ], function () {
 
+
+    //Public webpage route
+
+    //redirect to homepage
+    Route::get('/', function () {
+        return redirect(LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), '/home'));
+    });
+    Route::get('/home', [\App\Http\Controllers\PublicController::class, 'index'])->name('home');
+    Route::get('/about', [\App\Http\Controllers\PublicController::class, 'about'])->name('about');
+    Route::get('/products', [\App\Http\Controllers\PublicController::class, 'products'])->name('products');
+    Route::get('/mazoon45', [\App\Http\Controllers\PublicController::class, 'mazoon45'])->name('mazoon45');
+    Route::get('/mazoon60', [\App\Http\Controllers\PublicController::class, 'mazoon60'])->name('mazoon60');
+    Route::get('/mazooncw', [\App\Http\Controllers\PublicController::class, 'mazooncw'])->name('mazooncw');
+    Route::get('/contact', [\App\Http\Controllers\PublicController::class, 'contact'])->name('contact');
+    Route::get('/blog', [\App\Http\Controllers\PublicController::class, 'blog'])->name('blog');
+    Route::get('/news', [\App\Http\Controllers\PublicController::class, 'blog'])->name('news');
+    Route::get('/testimonials', [\App\Http\Controllers\PublicController::class, 'testimonials']);
+    Route::get('/portfolio', [\App\Http\Controllers\PublicController::class, 'portfolio']);
+    Route::get('/faq', [\App\Http\Controllers\PublicController::class, 'faq']);
+    Route::get('/terms', [\App\Http\Controllers\PublicController::class, 'terms']);
+    Route::get('blog', [\App\Http\Controllers\BlogController::class, 'index']);
+    /*Route::resource('news', NewsController::class);*/
+
+
+
     Route::group(['prefix' => 'account'], function () {
         //Guest Middleware
         Route::group(['middleware' => 'guest'], function () {
@@ -39,6 +64,3 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
 
 });
-
-
-
