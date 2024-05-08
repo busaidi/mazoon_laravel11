@@ -26,8 +26,13 @@
                 <!-- Contact Form -->
                 <div class="border p-4 mb-4">
                     <h4 class="border-bottom pb-3">{{ __('contact.form_h') }}</h4>
-                    <form action="{{--{{ route('contact.submit') }}--}}" method="POST">
-                        @csrf
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                        <form method="POST" action="{{ route("contact.store") }}" enctype="multipart/form-data">
+                            @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">{{ __('contact.form_name') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" required>

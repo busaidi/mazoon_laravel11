@@ -22,6 +22,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::get('/mazoon60', [\App\Http\Controllers\PublicController::class, 'mazoon60'])->name('mazoon60');
     Route::get('/mazooncw', [\App\Http\Controllers\PublicController::class, 'mazooncw'])->name('mazooncw');
     Route::get('/contact', [\App\Http\Controllers\PublicController::class, 'contact'])->name('contact');
+    Route::post('/contact_store', [\App\Http\Controllers\PublicController::class, 'contact_store'])->name('contact.store');
     Route::get('/blog', [\App\Http\Controllers\PublicController::class, 'blog'])->name('blog');
     Route::get('/news', [\App\Http\Controllers\PublicController::class, 'blog'])->name('news');
     Route::get('/testimonials', [\App\Http\Controllers\PublicController::class, 'testimonials']);
@@ -30,6 +31,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::get('/terms', [\App\Http\Controllers\PublicController::class, 'terms']);
     Route::get('blog', [\App\Http\Controllers\BlogController::class, 'index']);
     /*Route::resource('news', NewsController::class);*/
+
+    // Contact
+    /*Route::delete('contacts/destroy', 'ContactController@massDestroy')->name('contacts.massDestroy');
+    Route::resource('contacts', 'ContactController');*/
+
+
+    Route::resource('posts', 'PostController');
 
 
 

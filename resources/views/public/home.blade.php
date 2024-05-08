@@ -19,6 +19,8 @@
                 <img src="{{ asset('images/hero/hero-gray.jpg') }}" class="img-fluid" alt="Hero Mazoon Aluminum">
             </div>
             </div>
+
+
             <div class="px-4 py-5 text-center bg-white">
                 <h1 class="display-4 fw-bold text-body-emphasis">{{ __('hero.title') }}</h1>
                 <div class="col-lg-6 mx-auto">
@@ -26,6 +28,9 @@
                     <a href="{{ url(app()->getLocale() . '/about') }}" class="btn btn-primary btn-lg px-4">{{ __('hero.link') }}</a>
                 </div>
             </div>
+
+
+
             <div class="container text-center p-0 bg-white">
                 <p class="desc lead">{{ __('home.h1_lead') }} <a target="_blank" class="link-dark" href="https://www.napcooman.com/">{{ __('home.h1_lead_link') }}</a></p>
             </div>
