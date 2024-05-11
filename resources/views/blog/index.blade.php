@@ -1,168 +1,114 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Blog Home - Start Bootstrap Template</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
-    <link href="{{ asset('css/bootstrap.rtl.min.css') }}" rel="stylesheet">
+@extends('layouts.app')
+@section('content')
 
-</head>
-<body>
-<!-- Responsive navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="#!">Start Bootstrap</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<!-- Page header with logo and tagline-->
-<header class="py-5 bg-light border-bottom mb-4">
-    <div class="container">
-        <div class="text-center my-5">
-            <h1 class="fw-bolder">Welcome to Blog Home!</h1>
-            <p class="lead mb-0">A Bootstrap 5 starter layout for your next blog homepage</p>
-        </div>
-    </div>
-</header>
-<!-- Page content-->
-<div class="container">
-    <div class="row">
-        <!-- Blog entries-->
-        <div class="col-lg-8">
-            <!-- Featured blog post-->
-            <div class="card mb-4">
-                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                <div class="card-body">
-                    <div class="small text-muted">January 1, 2023</div>
-                    <h2 class="card-title">Featured Post Title</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                    <a class="btn btn-primary" href="#!">Read more →</a>
-                </div>
-            </div>
-            <!-- Nested row for non-featured blog posts-->
-            <div class="row">
-                <div class="col-lg-6">
-                    <!-- Blog post-->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">January 1, 2023</div>
-                            <h2 class="card-title h4">Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
-                        </div>
-                    </div>
-                    <!-- Blog post-->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">January 1, 2023</div>
-                            <h2 class="card-title h4">Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <!-- Blog post-->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">January 1, 2023</div>
-                            <h2 class="card-title h4">Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
-                        </div>
-                    </div>
-                    <!-- Blog post-->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">January 1, 2023</div>
-                            <h2 class="card-title h4">Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Pagination-->
-            <nav aria-label="Pagination">
-                <hr class="my-0" />
-                <ul class="pagination justify-content-center my-4">
-                    <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
-                    <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#!">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#!">3</a></li>
-                    <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
-                    <li class="page-item"><a class="page-link" href="#!">15</a></li>
-                    <li class="page-item"><a class="page-link" href="#!">Older</a></li>
-                </ul>
-            </nav>
-        </div>
-        <!-- Side widgets-->
-        <div class="col-lg-4">
-            <!-- Search widget-->
-            <div class="card mb-4">
-                <div class="card-header">Search</div>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                        <button class="btn btn-primary" id="button-search" type="button">Go!</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Categories widget-->
-            <div class="card mb-4">
-                <div class="card-header">Categories</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">Web Design</a></li>
-                                <li><a href="#!">HTML</a></li>
-                                <li><a href="#!">Freebies</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">JavaScript</a></li>
-                                <li><a href="#!">CSS</a></li>
-                                <li><a href="#!">Tutorials</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Side widget-->
-            <div class="card mb-4">
-                <div class="card-header">Side Widget</div>
-                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Footer-->
-<footer class="py-5 bg-dark">
-    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
-</footer>
-<!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="js/scripts.js"></script>
-</body>
-</html>
+                   {{-- @foreach($posts as $post)
+                        <tr>
+                            <td>{{ $post->id }}</td>
+                            <td>{{ $post->title }}</td>
+                            <td>
+                                <a href="{{ route('post.show', $post->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
+                            </td>
+                        </tr>
+                    @endforeach--}}
+
+
+
+
+                   {{--<div class="container">
+                       <header class="border-bottom lh-1 py-3">
+                           <div class="row flex-nowrap justify-content-between align-items-center">
+                               <div class="col-4 pt-1">
+                                   <a class="link-secondary" href="#">Subscribe</a>
+                               </div>
+                               <div class="col-4 text-center">
+                                   <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">Large</a>
+                               </div>
+                               <div class="col-4 d-flex justify-content-end align-items-center">
+                                   <a class="link-secondary" href="#" aria-label="Search">
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
+                                   </a>
+                                   <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+                               </div>
+                           </div>
+                       </header>
+
+                   <div class="nav-scroller py-0 mb-3 border-bottom">
+                       <nav class="nav nav-underline justify-content-between">
+                           <a class="nav-item nav-link link-body-emphasis" href="#">Mazoon Aluminum</a>
+                           <a class="nav-item nav-link link-body-emphasis " href="#">Mazoon System</a>
+                           <a class="nav-item nav-link link-body-emphasis active" href="#">Aluminum</a>
+                           <a class="nav-item nav-link link-body-emphasis" href="#">Glass</a>
+                           <a class="nav-item nav-link link-body-emphasis" href="#">Fabricator</a>
+                           <a class="nav-item nav-link link-body-emphasis" href="#">Design</a>
+                           <a class="nav-item nav-link link-body-emphasis" href="#">Construction</a>
+                           <a class="nav-item nav-link link-body-emphasis" href="#">Business</a>
+
+                       </nav>
+                   </div>
+                   </div>--}}
+
+                   <main class="container">
+                       @foreach($featuredPosts as $post)
+
+                       <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+                           <div class="col-lg-6 px-0">
+                               <h1 class="display-4 fst-italic">{{ $post->title }}</h1>
+                               <div>{!! preg_match('/<p[^>]*>(.*?)<\/p>/is', $post->body, $matches) ? $matches[0] : $post->body !!}</div>
+                               <p class="lead mb-0"><a href="{{route('post.show',$post->id)}}" class="text-body-emphasis fw-bold">Continue reading...</a></p>
+                           </div>
+                       </div>
+                       @endforeach
+
+                       <div class="row mb-2">
+                           @foreach($pagePosts as $post)
+                           <div class="col-md-6">
+                               <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                   <div class="col p-4 d-flex flex-column position-static">
+                                       <strong class="d-inline-block mb-2 text-success-emphasis">Design</strong>
+                                       <h3 class="mb-0">{{ $post->title }}</h3>
+                                       <div class="mb-1 text-body-secondary">{{ $post->created_at->format('jS M Y') }}</div>
+                                       {!! $post->body !!}
+                                       <a href="{{route('post.show',$post->id)}}" class="icon-link gap-1 icon-link-hover stretched-link">
+                                           Continue reading
+                                           <svg class="bi"><use xlink:href="#chevron-right"/></svg>
+                                       </a>
+                                   </div>
+                                   <div class="col-auto d-none d-lg-block">
+                                       <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                                   </div>
+                               </div>
+                           </div>
+                           @endforeach
+                       </div>
+
+                       <div class="row g-5">
+                           <div class="col-md-8">
+                               <h3 class="pb-4 mb-4 fst-italic border-bottom">
+                                   From the Firehose
+                               </h3>
+
+                               @foreach($regularPosts as $post)
+                               <article class="blog-post">
+                                   <h2 class="display-5 link-body-emphasis mb-1"><a  class="text-decoration-none text-dark" href="{{route('post.show',$post->id)}}">{{ $post->title }}</a> </h2>
+                                   <p class="blog-post-meta">Created at: {{ $post->created_at->format('jS M Y') }} by <a href="#">{{ optional($post->user)->name }} </a> Updated at: {{ $post->updated_at->format('jS M Y') }}</p>
+                                   {!! $post->body !!}
+                               </article>
+                               @endforeach
+
+                               <nav class="blog-pagination" aria-label="Pagination">
+                                   <a class="btn btn-outline-primary rounded-pill" href="#">Older</a>
+                                   <a class="btn btn-outline-secondary rounded-pill disabled" aria-disabled="true">Newer</a>
+                               </nav>
+
+                           </div>
+
+                           <div class="col-md-4">
+                               <!-- Sidebar widgets -->
+                               @include('blog.sidebar')
+                           </div>
+                       </div>
+
+                   </main>
+    <br><br>
+
+@endsection

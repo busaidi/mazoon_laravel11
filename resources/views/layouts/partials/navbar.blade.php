@@ -16,7 +16,8 @@
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="{{route('news')}}">{{ __('navbar.news') }}</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{--{{route('blog')}}--}}">{{ __('navbar.blog') }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('blog')}}">{{ __('navbar.blog') }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('blog')}}">{{ __('navbar.downloads') }}</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">{{ __('navbar.contact') }}</a></li>
             </ul>
 
@@ -44,6 +45,19 @@
         </div>
     </div>
 </nav>
+<div class="nav-scroller py-0 mb-3 border-bottom">
+    {{--<nav class="nav nav-underline justify-content-between">
+        <a class="nav-item nav-link link-body-emphasis" href="#">Mazoon Aluminum</a>
+        <a class="nav-item nav-link link-body-emphasis " href="#">Mazoon System</a>
+        <a class="nav-item nav-link link-body-emphasis active" href="#">Aluminum</a>
+        <a class="nav-item nav-link link-body-emphasis" href="#">Glass</a>
+        <a class="nav-item nav-link link-body-emphasis" href="#">Fabricator</a>
+        <a class="nav-item nav-link link-body-emphasis" href="#">Design</a>
+        <a class="nav-item nav-link link-body-emphasis" href="#">Construction</a>
+        <a class="nav-item nav-link link-body-emphasis" href="#">Business</a>
+
+    </nav>--}}
+</div>
 
 
 

@@ -13,9 +13,17 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('content');
+            $table->json('title');
+            $table->json('body');
+            $table->string('slug');
+            $table->enum('status', ['published', 'draft'])->default('published');
+            $table->enum('type', ['post', 'page','featured'])->default('post');
+            $table->bigInteger('author_id')->unsigned()->nullable();
+            $table->foreign('author_id')->references('id')->on('users')->onDelete('set null');
+            /*$table->bigInteger('category_id')->unsigned()->nullable();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');*/
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -24,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('post');
     }
 };

@@ -16,5 +16,6 @@ return [
     'mazoon45'=>'Mazoon 45',
     'mazoon60'=>'Mazoon 60',
     'mazooncw'=>'Mazoon Curtain Wall',
+    'downloads'=>'Downloads',
 
 ];

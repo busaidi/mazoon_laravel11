@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}" >
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @include('public.partials.seo', [
+    @include('layouts.partials.seo', [
         'title' => __('navbar.title') . ' | ' .  __('title'),
         'description' => $description,
         'keywords' => $keywords
@@ -22,7 +22,7 @@
     @yield('hero')
 </header>--}}
 {{--    @include('public.partials.carousel')--}}
-    @yield('content')
+@yield('content')
 {{--<footer>
     @include('public.partials.footer')
 </footer>--}}

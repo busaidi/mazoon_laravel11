@@ -1,52 +1,52 @@
-@extends('public.layouts.app')
+@extends('layouts.app')
 
 @section('title', __('navbar.about'))
 
-    @section('content')
-        <div class="container py-5">
-            <!-- Title Section -->
-            <div class="row mb-5">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h1 class="display-4">{{ __('about.title_1') }}</h1>
-                    <p class="lead mt-3">{{ __('about.lead') }}</p>
-                </div>
+@section('content')
+    <div class="container py-5">
+        <!-- Title Section -->
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-4">{{ __('about.title_1') }}</h1>
+                <p class="lead mt-3">{{ __('about.lead') }}</p>
             </div>
+        </div>
 
-            <!-- Journey Timeline Section -->
-            <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <h3 class="mb-4 text-center">{{ __('about.title_2') }}</h3>
-                    <div class="timeline">
-                        <!-- Timeline Items -->
-                        @for($i = 1; $i <= 6; $i++)
-                            @php
-                                $stageKey = 'stage_' . $i;
-                                $stageText = __('about.' . $stageKey);
-                            @endphp
-                            @if(!empty($stageText))
-                                <div class="timeline-item">
-                                    <div class="timeline-icon">
-                                        <i class="fas fa-history"></i> <!-- Default icon, can be changed -->
-                                    </div>
-                                    <div class="timeline-content">
-                                        <h5>{{ $stageText }}</h5>
-                                    </div>
+        <!-- Journey Timeline Section -->
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <h3 class="mb-4 text-center">{{ __('about.title_2') }}</h3>
+                <div class="timeline">
+                    <!-- Timeline Items -->
+                    @for($i = 1; $i <= 6; $i++)
+                        @php
+                            $stageKey = 'stage_' . $i;
+                            $stageText = __('about.' . $stageKey);
+                        @endphp
+                        @if(!empty($stageText))
+                            <div class="timeline-item">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-history"></i> <!-- Default icon, can be changed -->
                                 </div>
-                            @endif
-                        @endfor
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mazoon Aluminum Section -->
-            <div class="row mt-5">
-                <div class="col-lg-8 mx-auto">
-                    <h2 class="mb-3 text-center">{{ __('about.title_3') }}</h2>
-                    <p class="text-center">{{ __('about.lead_2') }}</p>
+                                <div class="timeline-content">
+                                    <h5>{{ $stageText }}</h5>
+                                </div>
+                            </div>
+                        @endif
+                    @endfor
                 </div>
             </div>
         </div>
-    @endsection
+
+        <!-- Mazoon Aluminum Section -->
+        <div class="row mt-5">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="mb-3 text-center">{{ __('about.title_3') }}</h2>
+                <p class="text-center">{{ __('about.lead_2') }}</p>
+            </div>
+        </div>
+    </div>
+@endsection
 
 
 @push('css')
@@ -56,7 +56,7 @@
             border-left: 3px solid #007bff;
             border-bottom-right-radius: 4px;
             border-top-right-radius: 4px;
-            background: rgba(0,123,255,0.07);
+            background: rgba(0, 123, 255, 0.07);
             margin: 20px auto;
             letter-spacing: 0.5px;
             position: relative;

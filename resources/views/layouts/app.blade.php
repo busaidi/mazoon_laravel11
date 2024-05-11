@@ -15,6 +15,9 @@
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     @endif
 
+    <!-- Include stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.1/dist/quill.snow.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
@@ -28,19 +31,37 @@
 </head>
 <body class="bg-light">
 <header>
-@include('public.partials.topbar')
-@include('public.partials.navbar')
+    @include('layouts.partials.topbar')
+    @include('layouts.partials.navbar')
 </header>
-    {{--    @include('public.partials.header')--}}
-    @yield('hero')
+
+
+
+
+
+
+{{--    @include('public.partials.header')--}}
+@yield('hero')
 
 {{--    @include('public.partials.carousel')--}}
 
 @yield('content')
 <footer>
-    @include('public.partials.footer')
+    @include('layouts.partials.footer')
 </footer>
 
+@stack('scripts') {{-- This is where scripts pushed from child views will be placed --}}
+<!-- Include the Quill library -->
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.1/dist/quill.js"></script>
 <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+
+{{--<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+            $(".alert").slideUp(500);
+        });
+    });
+</script>--}}
+
 </body>
 </html>

@@ -53,7 +53,7 @@
                     <a class="btn btn-primary" href="#!">Read more →</a>
                 </div>
             </div>
-            <!-- Nested row for non-featured blog posts-->
+            <!-- Nested row for non-featured blog post-->
             <div class="row">
                 <div class="col-lg-6">
                     <!-- Blog post-->
