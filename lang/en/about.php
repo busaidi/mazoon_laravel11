@@ -17,8 +17,4 @@ Throughout our development, we have been driven by constant innovation, adaptabi
 
 
 
-
-
-    'description' => 'Learn about Mazoon Aluminum, a reputable provider of aluminum and glass solutions with a dedicated team ensuring the highest standards of quality and service.',
-    'keywords' => 'About Mazoon Aluminum, aluminum solutions, glass solutions, quality, service',
 ];

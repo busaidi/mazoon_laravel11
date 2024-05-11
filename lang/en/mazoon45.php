@@ -13,8 +13,7 @@ return [
     'f3description'=>'Our approach to strength and durability in manufacturing ensures that every detail, even if it is small, is assembled using two hidden screws. This not only enhances the structure but also maintains the elegant appearance of the system.',
     'f4description'=>'The Mozoon 45 system is versatile and meets a variety of architectural needs such as circular windows and more. Whether you are aiming for a wide panoramic view or a segmented window design, our system adapts easily.',
 
-//    'description' => 'Explore our wide range of aluminum and glass products tailored to meet the needs of both residential and commercial projects.',
-    'keywords' => 'aluminum products, glass products, residential projects, commercial projects',
+
 
 
 ];

@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mazoon </title>
-    {{--@include('public.partials.seo', [
-        'title' => __('navbar.title') . ' | ' .  __('title'),
-        'description' => $description,
-        'keywords' => $keywords
-    ])--}}
+    <title>{{ $metaTitle }}</title>
+    <meta name="description" content="{{ $metaDescription }}">
+    <meta name="keywords" content="{{ $metaKeywords }}">
+
+
     @if(app()->getLocale() == 'ar')
         <link href="{{ asset('css/bootstrap.rtl.min.css') }}" rel="stylesheet">
     @else
