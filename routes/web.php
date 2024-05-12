@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\LoginController;
+use App\Http\Controllers\blog\BlogController;
+use App\Http\Controllers\blog\CommentController;
+use App\Http\Controllers\blog\PostController;
+use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -17,27 +23,29 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         return redirect(LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale(), '/home'));
     });
     Route::group(['middleware' => 'seo'], function () {
-        Route::get('/home', [\App\Http\Controllers\PublicController::class, 'index'])->name('home');
-        Route::get('/about', [\App\Http\Controllers\PublicController::class, 'about'])->name('about');
-        Route::get('/products', [\App\Http\Controllers\PublicController::class, 'products'])->name('products');
-        Route::get('/mazoon45', [\App\Http\Controllers\PublicController::class, 'mazoon45'])->name('mazoon45');
-        Route::get('/mazoon60', [\App\Http\Controllers\PublicController::class, 'mazoon60'])->name('mazoon60');
-        Route::get('/mazooncw', [\App\Http\Controllers\PublicController::class, 'mazooncw'])->name('mazooncw');
-        Route::get('/contact', [\App\Http\Controllers\PublicController::class, 'contact'])->name('contact');
-        Route::post('/contact_store', [\App\Http\Controllers\PublicController::class, 'contact_store'])->name('contact.store');
-        Route::get('/news', [\App\Http\Controllers\PublicController::class, 'blog'])->name('news');
-        Route::get('/testimonials', [\App\Http\Controllers\PublicController::class, 'testimonials']);
-        Route::get('/portfolio', [\App\Http\Controllers\PublicController::class, 'portfolio']);
-        Route::get('/faq', [\App\Http\Controllers\PublicController::class, 'faq']);
-        Route::get('/terms', [\App\Http\Controllers\PublicController::class, 'terms']);
+        Route::get('/home', [PublicController::class, 'index'])->name('home');
+        Route::get('/about', [PublicController::class, 'about'])->name('about');
+        Route::get('/products', [PublicController::class, 'products'])->name('products');
+        Route::get('/mazoon45', [PublicController::class, 'mazoon45'])->name('mazoon45');
+        Route::get('/mazoon60', [PublicController::class, 'mazoon60'])->name('mazoon60');
+        Route::get('/mazooncw', [PublicController::class, 'mazooncw'])->name('mazooncw');
+        Route::get('/contact', [PublicController::class, 'contact'])->name('contact');
+        Route::post('/contact_store', [PublicController::class, 'contact_store'])->name('contact.store');
+        Route::get('/news', [PublicController::class, 'blog'])->name('news');
+        Route::get('/testimonials', [PublicController::class, 'testimonials']);
+        Route::get('/portfolio', [PublicController::class, 'portfolio']);
+        Route::get('/faq', [PublicController::class, 'faq']);
+        Route::get('/terms', [PublicController::class, 'terms']);
         //Blog routes
-        Route::get('/blog', [\App\Http\Controllers\blog\BlogController::class, 'index'])->name('blog');
+        Route::get('/blog', [BlogController::class, 'index'])->name('blog');
         /*Route::resource('news', NewsController::class);*/
 
-        Route::resource('post', \App\Http\Controllers\blog\PostController::class);
+        Route::resource('post', PostController::class);
     });
+/*    Route::get('/tags/{tag}', [TagController::class, 'showPosts'])->name('tag.posts');*/
 
-    Route::post('comments', [\App\Http\Controllers\blog\CommentController::class, 'store'])->name('comments.store');
+
+    Route::post('comments', [CommentController::class, 'store'])->name('comments.store');
 
 
 
@@ -64,13 +72,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
     Route::group(['prefix' => 'admin'], function () {
         //Guest Middleware for admin
         Route::group(['middleware' => 'admin.guest'], function () {
-            Route::get('login', [\App\Http\Controllers\admin\LoginController::class, 'index'])->name('admin.login');
-            Route::post('authenticate', [\App\Http\Controllers\admin\LoginController::class, 'authenticate'])->name('admin.authenticate');
+            Route::get('login', [LoginController::class, 'index'])->name('admin.login');
+            Route::post('authenticate', [LoginController::class, 'authenticate'])->name('admin.authenticate');
         });
         //Authenticated Middleware for admin
         Route::group(['middleware' => 'admin.auth'], function () {
-            Route::get('dashboard', [\App\Http\Controllers\admin\DashboardController::class, 'index'])->name('admin.dashboard');
-            Route::get('logout', [\App\Http\Controllers\admin\LoginController::class, 'logout'])->name('admin.logout');
+            Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+            Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
         });
     });
 

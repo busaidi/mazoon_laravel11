@@ -6,7 +6,7 @@
 
         <!-- Hero Section with Parallax Effect -->
         <div class="hero bg-primary text-white text-center py-5"
-             style="background-image: url('/images/products/mazoon45/8.jpg'); background-attachment: fixed; background-position: bottom; background-repeat: no-repeat">
+             style="background-image: url('{{asset('/images/products/mazoon45/8.jpg')}}'); background-attachment: fixed; background-position: bottom; background-repeat: no-repeat">
             <h1>{{ __('mazoon45.title') }}</h1>
             <p class="lead">
                 {{--Catchy tagline or sentence about the product.--}}

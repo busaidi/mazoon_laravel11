@@ -47,6 +47,19 @@
                                 </select>
                             </div>
                             <div class="mb-3">
+                                <label for="tags" class="form-label">Tags:</label>
+                                <select id="tags" name="tags[]" class="form-control" multiple>
+                                    @foreach(\App\Models\Tag::all() as $tag)
+                                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                    @endforeach
+                                </select>
+                                <small class="text-muted">Hold down the Ctrl (Windows) or Command (Mac) button to select multiple options.</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="new_tag" class="form-label">Add New Tags (comma-separated):</label>
+                                <input type="text" id="new_tag" name="new_tag" class="form-control" placeholder="e.g., Laravel, PHP, Backend">
+                            </div>
+                            <div class="mb-3">
                                 <label for="author_id" class="form-label">Author ID (optional):</label>
                                 <input type="number" id="author_id" name="author_id" class="form-control" placeholder="Enter author ID if applicable">
                             </div>
@@ -66,7 +79,10 @@
     </div>
 @endsection
 
+
 @push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const quillEn = new Quill('#editor_en', {
@@ -85,6 +101,12 @@
                 var bodyAr = document.querySelector('textarea[name=body_ar]');
                 bodyAr.value = quillAr.root.innerHTML;
             };
+
+            $('#tags').select2({
+                placeholder: "Select or type tags",
+                tags: true,
+                tokenSeparators: [',']
+            });
         });
     </script>
 @endpush

@@ -1,8 +1,16 @@
 <?php
 
+use App\Http\Middleware\AdminAuthenticate;
+use App\Http\Middleware\AdminRedirect;
+use App\Http\Middleware\SeoMetaTags;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter;
+use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes;
+use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath;
+use Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect;
+use Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -13,14 +21,14 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
 
         $middleware->alias([
-            'admin.guest' =>\App\Http\Middleware\AdminRedirect::class,
-            'admin.auth' =>\App\Http\Middleware\AdminAuthenticate::class,
-            'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
-            'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
-            'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
-            'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
-            'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
-            'seo'                     => \App\Http\Middleware\SeoMetaTags::class, //custom SEO middleware
+            'admin.guest' => AdminRedirect::class,
+            'admin.auth' => AdminAuthenticate::class,
+            'localize'                => LaravelLocalizationRoutes::class,
+            'localizationRedirect'    => LaravelLocalizationRedirectFilter::class,
+            'localeSessionRedirect'   => LocaleSessionRedirect::class,
+            'localeCookieRedirect'    => LocaleCookieRedirect::class,
+            'localeViewPath'          => LaravelLocalizationViewPath::class,
+            'seo'                     => SeoMetaTags::class, //custom SEO middleware
         ]);
 
         //redirect customer user

@@ -15,6 +15,7 @@
                         <input type="hidden" name="post_id" value="{{ $post_id }}">
                         <input type="hidden" name="parent_id" value="{{ $comment->id }}">
                         <button class="btn btn-dark" type="submit" id="button-addon2">Post Reply</button>
+                    </div>
                 </form>
             </div>
         </footer>

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\blog;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -47,6 +47,8 @@ class PostController extends Controller
     }
 
 
+
+
     public function store(Request $request)
     {
         $request->validate([
@@ -57,7 +59,11 @@ class PostController extends Controller
             'slug' => 'nullable|string|max:255',
             'status' => 'required|in:published,draft',
             'type' => 'required|in:post,page,featured',
-            'author_id' => 'nullable|integer|exists:users,id'
+            'author_id' => 'nullable|integer|exists:users,id',
+            'tags' => 'nullable|array',  // Validate tags as an array if provided
+            'tags.*' => 'integer|exists:tags,id',  // Validate each tag id exists
+            'new_tag_en' => 'nullable|string',  // Validate new tags in English
+            'new_tag_ar' => 'nullable|string'  // Validate new tags in Arabic
         ]);
 
         if (empty($request->slug)) {
@@ -71,8 +77,24 @@ class PostController extends Controller
         $post->setTranslation('body', 'ar', $request->body_ar);
         $post->save();
 
+        // Handle existing tags
+        if ($request->has('tags')) {
+            $post->tags()->sync($request->tags);
+        }
+
+        // Handle new tags
+        if ($request->has('new_tag_en') && !empty($request->new_tag_en)) {
+            $newTagsEn = array_map('trim', explode(',', $request->new_tag_en));
+            foreach ($newTagsEn as $newTagNameEn) {
+                $tag = Tag::firstOrCreate(['name' => ['en' => $newTagNameEn, 'ar' => $request->new_tag_ar]]);
+                $post->tags()->attach($tag->id);
+            }
+        }
+
         return redirect()->route('post.index')->with('success', 'Post created successfully');
     }
+
+
 
 
 
@@ -81,7 +103,7 @@ class PostController extends Controller
     {
         $locale = app()->getLocale(); // Get the current locale
 
-        $post = Post::find($id);
+        $post = Post::with('tags')->findOrFail($id);
         $featuredPosts = Post::with('user')->where('type', 'featured')->get();
 
         $recentPosts = Post::orderBy('id', 'desc')->take(3)->get()->map(function ($post) use ($locale) {
@@ -158,6 +180,19 @@ class PostController extends Controller
         $post->setTranslation('body', 'ar', $request->body_ar);
         $post->save();
 
+        // Sync existing tags
+        $post->tags()->sync($request->tags);
+
+        // Handle new tags
+        if ($request->has('new_tag') && !empty($request->new_tag)) {
+            $newTags = array_map('trim', explode(',', $request->new_tag));
+            foreach ($newTags as $newTagName) {
+                $tag = Tag::firstOrCreate(['name' => $newTagName]);
+                $post->tags()->attach($tag->id);
+            }
+        }
+
+
         return redirect()->route('post.index')->with('success', 'Post updated successfully');
     }
 
@@ -172,4 +207,15 @@ class PostController extends Controller
         return redirect()->route('post.index')->with('success', 'Post deleted successfully');
 
     }
+
+
+    public function addTagToPost(Request $request, $postId)
+    {
+        $post = Post::findOrFail($postId);
+        $tag = Tag::firstOrCreate(['name' => $request->name]);  // Create the tag if it does not exist.
+        $post->tags()->attach($tag->id);  // Attach the tag to the post.
+
+        return redirect()->back()->with('message', 'Tag added successfully!');
+    }
+
 }

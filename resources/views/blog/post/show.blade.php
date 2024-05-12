@@ -24,9 +24,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <div>
                                 <a href="{{ route('post.edit', $post->id) }}" class="btn btn-outline-dark">Edit</a>
-                                <button class="btn btn-dark" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal{{ $post->id }}">Delete
-                                </button>
+                                <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $post->id }}">Delete</button>
                             </div>
                         </div>
                         <p class="blog-post-meta">
@@ -36,6 +34,14 @@
                         </p>
 
                         {!! $post->body !!}
+
+                        <!-- Tags Section -->
+                        <p>
+                            Tags:
+                            @foreach($post->tags as $tag)
+                                <a href="{{--{{ route('tag.posts', $tag->id) }}--}}" class="badge bg-secondary">{{ $tag->name }}</a>
+                            @endforeach
+                        </p>
 
                         <!-- Modal for confirmation -->
                         <div class="modal fade" id="deleteModal{{ $post->id }}" tabindex="-1"

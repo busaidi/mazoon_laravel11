@@ -24,7 +24,7 @@ class BlogController extends Controller
         });
 
         // Page Posts
-        $pagePosts = Post::with('user')->where('type', 'page')->get()->map(function ($post) use ($locale) {
+        $pagePosts = Post::with('user','tags')->where('type', 'page')->get()->map(function ($post) use ($locale) {
             $post->title = $post->getTranslation('title', $locale);
             $post->body = $post->getTranslation('body', $locale);
             return $post;

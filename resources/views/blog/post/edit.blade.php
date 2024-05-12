@@ -57,6 +57,23 @@
                                 </select>
                             </div>
                             <div class="mb-3">
+                                <label for="tags" class="form-label">Tags:</label>
+                                <select id="tags" name="tags[]" class="form-control" multiple>
+                                    @foreach(\App\Models\Tag::all() as $tag)
+                                        <option value="{{ $tag->id }}" {{ in_array($tag->id, $post->tags->pluck('id')->toArray()) ? 'selected' : '' }}>
+                                            {{ $tag->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <small class="text-muted">Hold down the Ctrl (Windows) or Command (Mac) button to select multiple options.</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="new_tag" class="form-label">Add New Tags (comma-separated):</label>
+                                <input type="text" id="new_tag" name="new_tag" class="form-control" placeholder="e.g., Laravel, PHP, Backend">
+                            </div>
+
+
+                            <div class="mb-3">
                                 <label for="author_id" class="form-label">Author ID (optional):</label>
                                 <input type="number" id="author_id" name="author_id" class="form-control" value="{{ $post->author_id }}" placeholder="Enter author ID if applicable">
                             </div>
