@@ -1,20 +1,28 @@
 <?php
 
 return [
+    'multi_auth' => 'Laravel 11 Multi Auth',
+    'logo_alt' => 'Mazoon Aluminum Logo',
+    'login_here' => 'Login Here',
+    'email' => 'Email',
+    'email_placeholder' => 'name@example.com',
+    'password' => 'Password',
+    'password_placeholder' => 'Password',
+    'log_in_now' => 'Log in now',
+    'login_with_google' => 'Login with Google',
+    'no_account' => "Don't have an account?",
+    'create_account' => 'Create new account',
 
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
-    |
-    */
 
-    'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'register_here' => 'Register Here',
+    'name' => 'Name',
+    'name_placeholder' => 'Name',
+    'confirm_password' => 'Confirm Password',
+    'confirm_password_placeholder' => 'Confirm Password',
+    'register_now' => 'Register Now',
+    'already_have_account' => 'Already have an account?',
+    'click_here_to_login' => 'Click here to login',
+    'register_with_google' => 'Register with Google',
+
 
 ];
