@@ -15,9 +15,13 @@
 
 @section('content')
     <div class="container-fluid m-0 p-0">
+
+
         <div class="container text-center">
             <img src="{{ asset('images/hero/hero-gray.jpg') }}" class="img-fluid" alt="Hero Mazoon Aluminum">
         </div>
+
+
     </div>
 
 
@@ -29,6 +33,7 @@
                class="btn btn-primary btn-lg px-4">{{ __('hero.link') }}</a>
         </div>
     </div>
+
 
 
 
@@ -149,5 +154,46 @@
             </div>
         </div>
     </div>
+
+    <!-- Combined Latest Blogs and News Section -->
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Latest Blogs Column -->
+            <div class="col-md-6 mb-5">
+                <div class="bg-light p-3 rounded shadow-sm">
+                    <h2 class="pb-2 border-bottom">Latest Blogs</h2>
+                    <ul class="list-group list-group-flush">
+                        @for ($i = 0; $i < 3; $i++)
+                            <li class="list-group-item">
+                                <a href="#" class="text-decoration-none text-dark">
+                                    <h6 class="mb-1">Blog Post Title {{ $i + 1 }}</h6>
+                                    <p class="mb-0 text-muted small">This is a summary of the blog post. Brief and concise.</p>
+                                </a>
+                            </li>
+                        @endfor
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Latest News Column -->
+            <div class="col-md-6 mb-5">
+                <div class="bg-light p-3 rounded shadow-sm">
+                    <h2 class="pb-2 border-bottom">Latest News</h2>
+                    <ul class="list-group list-group-flush">
+                        @for ($i = 0; $i < 3; $i++)
+                            <li class="list-group-item">
+                                <a href="#" class="text-decoration-none text-dark">
+                                    <h6 class="mb-1">News Item Title {{ $i + 1 }}</h6>
+                                    <p class="mb-0 text-muted small">Brief description of the news. Efficient and informative.</p>
+                                </a>
+                            </li>
+                        @endfor
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rest of your existing content... -->
 
 @endsection

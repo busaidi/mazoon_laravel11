@@ -18,6 +18,14 @@
         .border-secondary-subtle {
             border-color: #ced4da !important;
         }
+        .btn-google {
+            background-color: #db4437;
+            color: white;
+        }
+        .btn-google:hover {
+            background-color: #a8342f;
+            color: white;
+        }
     </style>
 </head>
 <body class="bg-light">
@@ -58,6 +66,10 @@
                                 <button class="btn btn-primary btn-lg" type="submit">Log in now</button>
                             </div>
                         </form>
+                        <!-- Google login button -->
+                        <div class="mt-3">
+                            <a href="{{ route('login.google') }}" class="btn btn-google btn-lg">Login with Google</a>
+                        </div>
                         <hr class="my-4 border-secondary-subtle">
                         <div class="text-center">
                             <p class="mb-2">Don't have an account?</p>

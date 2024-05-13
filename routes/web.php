@@ -36,6 +36,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         Route::get('/portfolio', [PublicController::class, 'portfolio']);
         Route::get('/faq', [PublicController::class, 'faq']);
         Route::get('/terms', [PublicController::class, 'terms']);
+        Route::get('/downloads', [PublicController::class, 'downloads'])->name('downloads');
         //Blog routes
         Route::get('/blog', [BlogController::class, 'index'])->name('blog');
         /*Route::resource('news', NewsController::class);*/
@@ -47,6 +48,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
     Route::post('comments', [CommentController::class, 'store'])->name('comments.store');
 
+
+
+    // Routes in web.php
+    Route::get('login/google', [App\Http\Controllers\LoginController::class, 'redirectToGoogle'])->name('login.google');
+    Route::get('login/google/callback', [App\Http\Controllers\LoginController::class,'handleGoogleCallback'])->name('login.google.callback');
 
 
 

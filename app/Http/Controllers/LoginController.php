@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class LoginController extends Controller
 {
@@ -16,7 +19,7 @@ class LoginController extends Controller
     public function index()
     {
         // Store the intended URL before redirecting to the login page
-        // i add this to save intended URL >> Hamed
+        // I add this to save intended URL >> Hamed
         if (!session()->has('url.intended')) {
             session()->put('url.intended', url()->previous());
         }
@@ -94,6 +97,59 @@ class LoginController extends Controller
         // Redirect the user to the previous URL
         return Redirect::to($previousUrl);
 
+    }
+
+    public function handleGoogleCallback()
+    {
+        try {
+            $googleUser = Socialite::driver('google')->user();
+
+            // Check if a user exists and log them in
+            $user = User::updateOrCreate([
+                'email' => $googleUser->email,
+            ], [
+                'google_id' => $googleUser->id,
+                'name' => $googleUser->name,
+                'password' => Hash::make(Str::random(24)), // You can also leave password empty or handle it differently depending on your authentication setup
+            ]);
+
+            Auth::login($user, true);
+
+            // Redirect user to their intended location
+            $intendedUrl = session()->pull('url.intended', route('home'));
+            return redirect()->to($intendedUrl);
+        } catch (\Exception $e) {
+            // In case of error
+            return redirect()->route('account.login')->with('error', 'Failed to login with Google: ' . $e->getMessage());
+        }
+    }
+
+    public function redirectToGoogle()
+    {
+
+        $locale = LaravelLocalization::getCurrentLocale();
+        $language = $this->mapLocaleToGoogleLanguage($locale);
+
+        /*return Socialite::driver('google')->redirect();*/
+        return Socialite::driver('google')
+            ->scopes(['openid', 'profile', 'email'])
+            ->with([
+                'prompt' => 'select_account consent',
+                'hl' => $language
+            ])
+            ->redirect();
+    }
+
+    protected function mapLocaleToGoogleLanguage($locale)
+    {
+        // Map your application locales to Google's language codes
+        $languageMap = [
+            'en' => 'en',  // English
+            'ar' => 'ar',  // Arabic
+            // Add other mappings as needed
+        ];
+
+        return $languageMap[$locale] ?? 'en';  // Default to English if not mapped
     }
 
 

@@ -20,6 +20,11 @@ class PublicController extends Controller
         /*$seoInfo = $this->getSEOInfo('about');*/
         return view('public.about');
     }
+    public function downloads()
+    {
+        /*$seoInfo = $this->getSEOInfo('about');*/
+        return view('public.downloads');
+    }
 
 
     public function mazoon45()

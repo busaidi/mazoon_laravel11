@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@section('title', __('navbar.contact'))
 @section('content')
     <br>
     <div class="container bg-white rounded-2 ">

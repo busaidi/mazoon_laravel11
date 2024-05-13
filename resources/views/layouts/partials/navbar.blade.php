@@ -17,7 +17,7 @@
                 </li>
                 <li class="nav-item"><a class="nav-link" href="{{route('news')}}">{{ __('navbar.news') }}</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{route('blog')}}">{{ __('navbar.blog') }}</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('blog')}}">{{ __('navbar.downloads') }}</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('downloads')}}">{{ __('navbar.downloads') }}</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">{{ __('navbar.contact') }}</a></li>
             </ul>
 
