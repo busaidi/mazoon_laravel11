@@ -4,17 +4,17 @@
             <strong>{{ $comment->user->name }}</strong>
             <small>{{ $comment->created_at->format('M d, Y') }}</small>
         </header>
-        <p>{{ $comment->body }}</p>
+        <p>{{ __($comment->body) }}</p>
         <footer class="d-flex align-items-center">
-            <button class="btn btn-outline-dark btn-sm me-2" data-bs-toggle="collapse" data-bs-target="#replyForm-{{ $comment->id }}">Reply</button>
+            <button class="btn btn-outline-dark btn-sm me-2" data-bs-toggle="collapse" data-bs-target="#replyForm-{{ $comment->id }}">{{ __('messages.reply') }}</button>
             <div class="collapse w-100" id="replyForm-{{ $comment->id }}">
                 <form method="post" action="{{ route('comments.store') }}" class="mt-2">
                     @csrf
                     <div class="input-group">
-                        <input type="text" name="body" class="form-control" placeholder="Write a reply..." aria-label="Reply" aria-describedby="button-addon2">
+                        <input type="text" name="body" class="form-control" placeholder="{{ __('messages.write_reply') }}" aria-label="Reply" aria-describedby="button-addon2">
                         <input type="hidden" name="post_id" value="{{ $post_id }}">
                         <input type="hidden" name="parent_id" value="{{ $comment->id }}">
-                        <button class="btn btn-dark" type="submit" id="button-addon2">Post Reply</button>
+                        <button class="btn btn-dark" type="submit" id="button-addon2">{{ __('messages.post_reply') }}</button>
                     </div>
                 </form>
             </div>
