@@ -35,8 +35,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ auth()->user()->name }}</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="{{ route('account.dashboard') }}">Dashboard</a></li>
+                            {{--<li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="{{ route('account.dashboard') }}">Dashboard</a></li>--}}
                             <li><a class="dropdown-item" href="{{ route('account.logout') }}">Logout</a></li>
                         </ul>
                     </li>

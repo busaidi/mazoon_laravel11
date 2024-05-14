@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\admin\ContactController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\LoginController;
+use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\blog\BlogController;
 use App\Http\Controllers\blog\CommentController;
 use App\Http\Controllers\blog\PostController;
@@ -77,7 +79,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
     Route::group(['prefix' => 'admin'], function () {
         //Guest Middleware for admin
-        Route::group(['middleware' => 'admin.guest'], function () {
+        Route::group(['middleware' => 'role:admin'], function () {
             Route::get('login', [LoginController::class, 'index'])->name('admin.login');
             Route::post('authenticate', [LoginController::class, 'authenticate'])->name('admin.authenticate');
         });
@@ -85,6 +87,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         Route::group(['middleware' => 'admin.auth'], function () {
             Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
             Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
+            Route::get('contacts', [ContactController::class, 'index'])->name('admin.contacts');
+            Route::resource('users', UserController::class)->names('admin.users');
         });
     });
 

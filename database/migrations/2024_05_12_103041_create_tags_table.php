@@ -11,7 +11,9 @@ return new class extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->json('name')->unique();
+            $table->string('name')->unique();
+            $table->json('title');
+
             $table->timestamps();
         });
     }
